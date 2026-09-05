@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    // =====================================================
-    // BASIC DETAILS
-    // =====================================================
+
 
     name: {
       type: String,
@@ -25,19 +23,14 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    // =====================================================
-    // ROLE
-    // =====================================================
-
+    
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
     },
 
-    // =====================================================
-    // PROFILE
-    // =====================================================
+    
 
     profileImage: {
       type: String,
@@ -50,9 +43,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // =====================================================
-    // ADDRESS
-    // =====================================================
+  
 
     address: {
       street: {
@@ -81,9 +72,7 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    // =====================================================
-    // FAVORITES
-    // =====================================================
+    
 
     favorites: [
       {
@@ -92,9 +81,7 @@ const userSchema = new mongoose.Schema(
       },
     ],
 
-    // =====================================================
-    // FOOD PREFERENCES
-    // =====================================================
+   
 
     preferences: {
       favoriteCategory: {
@@ -117,18 +104,14 @@ const userSchema = new mongoose.Schema(
       },
     },
 
-    // =====================================================
-    // NOTIFICATIONS
-    // =====================================================
+  
 
     notificationsEnabled: {
       type: Boolean,
       default: true,
     },
 
-    // =====================================================
-    // ACCOUNT STATUS
-    // =====================================================
+    
 
     isActive: {
       type: Boolean,

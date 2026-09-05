@@ -1,11 +1,6 @@
 const Recipe = require("../models/Recipe");
 const cloudinary = require("../config/cloudinary");
 
-
-// =========================================================
-// CLOUDINARY UPLOAD HELPER
-// =========================================================
-
 const uploadToCloudinary = (fileBuffer) => {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
@@ -27,9 +22,7 @@ const uploadToCloudinary = (fileBuffer) => {
 };
 
 
-// =========================================================
-// ADD RECIPE
-// =========================================================
+
 
 const addRecipe = async (req, res) => {
   try {
@@ -50,8 +43,7 @@ const addRecipe = async (req, res) => {
     } = req.body;
 
 
-    // ================= REQUIRED FIELDS =================
-
+    
     if (
       !title ||
       !description ||
@@ -65,8 +57,7 @@ const addRecipe = async (req, res) => {
     }
 
 
-    // ================= IMAGE =================
-
+ 
     if (!req.file) {
       return res.status(400).json({
         message: "Recipe image is required",
@@ -74,15 +65,13 @@ const addRecipe = async (req, res) => {
     }
 
 
-    // ================= UPLOAD TO CLOUDINARY =================
 
     const uploadedImage = await uploadToCloudinary(
       req.file.buffer
     );
 
 
-    // ================= CREATE RECIPE =================
-
+  
     const recipe = await Recipe.create({
       title: title.trim(),
 
@@ -96,28 +85,23 @@ const addRecipe = async (req, res) => {
 
       category: category.trim(),
 
-      // Cloudinary URL
       image: uploadedImage.secure_url,
 
-      // Cooking information
       cookingTime: Number(cookingTime) || 30,
 
       servings: Number(servings) || 4,
 
       spiceLevel: spiceLevel || "Medium",
 
-      // Diet information
       dietaryType:
         dietaryType || "Vegetarian",
 
       calories:
         Number(calories) || 0,
 
-      // Price
       price:
         Number(price) || 0,
 
-      // Status
       featured:
         featured === "true" ||
         featured === true,
@@ -126,12 +110,10 @@ const addRecipe = async (req, res) => {
         trending === "true" ||
         trending === true,
 
-      // Creator
       createdBy: req.user.userId,
     });
 
 
-    // ================= RESPONSE =================
 
     res.status(201).json({
       message: "Recipe added successfully",
@@ -153,9 +135,6 @@ const addRecipe = async (req, res) => {
 };
 
 
-// =========================================================
-// GET ALL RECIPES
-// =========================================================
 
 const getAllRecipes = async (req, res) => {
   try {
@@ -168,7 +147,7 @@ const getAllRecipes = async (req, res) => {
     let filter = {};
 
 
-    // Search
+   
     if (search) {
 
       filter.$or = [
@@ -190,7 +169,6 @@ const getAllRecipes = async (req, res) => {
     }
 
 
-    // Category
     if (
       category &&
       category !== "All"
@@ -234,9 +212,6 @@ const getAllRecipes = async (req, res) => {
 };
 
 
-// =========================================================
-// GET SINGLE RECIPE
-// =========================================================
 
 const getRecipeById = async (req, res) => {
   try {
@@ -276,9 +251,6 @@ const getRecipeById = async (req, res) => {
 };
 
 
-// =========================================================
-// UPDATE RECIPE
-// =========================================================
 
 const updateRecipe = async (req, res) => {
   try {
@@ -298,7 +270,6 @@ const updateRecipe = async (req, res) => {
     }
 
 
-    // Only creator can update
     if (
       recipe.createdBy.toString() !==
       req.user.userId
@@ -345,9 +316,7 @@ const updateRecipe = async (req, res) => {
 };
 
 
-// =========================================================
-// DELETE RECIPE
-// =========================================================
+
 
 const deleteRecipe = async (req, res) => {
   try {
@@ -367,7 +336,6 @@ const deleteRecipe = async (req, res) => {
     }
 
 
-    // Only creator can delete
     if (
       recipe.createdBy.toString() !==
       req.user.userId
@@ -406,9 +374,6 @@ const deleteRecipe = async (req, res) => {
 };
 
 
-// =========================================================
-// EXPORT
-// =========================================================
 
 module.exports = {
   addRecipe,

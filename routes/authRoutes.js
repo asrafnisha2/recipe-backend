@@ -15,17 +15,11 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// =========================================================
-// AUTH
-// =========================================================
-
 router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-// =========================================================
-// PROFILE
-// =========================================================
+
 
 router.get(
   "/profile",
@@ -39,9 +33,7 @@ router.put(
   updateProfile
 );
 
-// =========================================================
-// CHANGE PASSWORD
-// =========================================================
+
 
 router.put(
   "/change-password",
@@ -49,9 +41,7 @@ router.put(
   changePassword
 );
 
-// =========================================================
-// FAVORITES
-// =========================================================
+
 
 router.get(
   "/favorites",

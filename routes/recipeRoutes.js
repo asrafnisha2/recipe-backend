@@ -13,16 +13,13 @@ const upload = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
-// ================= PUBLIC =================
 
 router.get("/", getAllRecipes);
 
 router.get("/:id", getRecipeById);
 
 
-// ================= PROTECTED =================
 
-// Add recipe with image upload
 router.post(
   "/",
   protect,
@@ -30,14 +27,12 @@ router.post(
   addRecipe
 );
 
-// Update recipe
 router.put(
   "/:id",
   protect,
   updateRecipe
 );
 
-// Delete recipe
 router.delete(
   "/:id",
   protect,

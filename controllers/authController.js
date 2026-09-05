@@ -2,9 +2,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// =========================================================
-// REGISTER
-// =========================================================
 
 const registerUser = async (req, res) => {
   try {
@@ -61,9 +58,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-// =========================================================
-// LOGIN
-// =========================================================
+
 
 const loginUser = async (req, res) => {
   try {
@@ -137,9 +132,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET PROFILE
-// =========================================================
 
 const getProfile = async (req, res) => {
   try {
@@ -166,9 +158,6 @@ const getProfile = async (req, res) => {
   }
 };
 
-// =========================================================
-// UPDATE PROFILE
-// =========================================================
 
 const updateProfile = async (req, res) => {
   try {
@@ -189,9 +178,7 @@ const updateProfile = async (req, res) => {
       notificationsEnabled,
     } = req.body;
 
-    // -------------------------
-    // BASIC DETAILS
-    // -------------------------
+   
 
     if (name !== undefined) {
       if (!name.trim()) {
@@ -211,10 +198,7 @@ const updateProfile = async (req, res) => {
       user.profileImage = profileImage.trim();
     }
 
-    // -------------------------
-    // ADDRESS
-    // -------------------------
-
+   
     if (address) {
       user.address = {
         street:
@@ -244,9 +228,6 @@ const updateProfile = async (req, res) => {
       };
     }
 
-    // -------------------------
-    // FOOD PREFERENCES
-    // -------------------------
 
     if (preferences) {
       if (
@@ -284,9 +265,7 @@ const updateProfile = async (req, res) => {
       };
     }
 
-    // -------------------------
-    // NOTIFICATIONS
-    // -------------------------
+    
 
     if (
       notificationsEnabled !== undefined
@@ -316,9 +295,6 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// =========================================================
-// CHANGE PASSWORD
-// =========================================================
 
 const changePassword = async (req, res) => {
   try {
@@ -398,9 +374,6 @@ const changePassword = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET FAVORITES
-// =========================================================
 
 const getFavorites = async (req, res) => {
   try {
@@ -429,9 +402,7 @@ const getFavorites = async (req, res) => {
   }
 };
 
-// =========================================================
-// ADD FAVORITE
-// =========================================================
+
 
 const addFavorite = async (req, res) => {
   try {
@@ -479,9 +450,7 @@ const addFavorite = async (req, res) => {
   }
 };
 
-// =========================================================
-// REMOVE FAVORITE
-// =========================================================
+
 
 const removeFavorite = async (req, res) => {
   try {
@@ -521,9 +490,6 @@ const removeFavorite = async (req, res) => {
   }
 };
 
-// =========================================================
-// EXPORT
-// =========================================================
 
 module.exports = {
   registerUser,

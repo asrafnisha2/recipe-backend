@@ -1,9 +1,7 @@
 const Cart = require("../models/cartModel");
 const Recipe = require("../models/Recipe");
 
-// =========================================================
-// GET CART
-// =========================================================
+
 
 const getCart = async (req, res) => {
   try {
@@ -36,9 +34,6 @@ const getCart = async (req, res) => {
   }
 };
 
-// =========================================================
-// ADD TO CART
-// =========================================================
 
 const addToCart = async (req, res) => {
   try {
@@ -132,9 +127,7 @@ const addToCart = async (req, res) => {
   }
 };
 
-// =========================================================
-// UPDATE CART ITEM
-// =========================================================
+
 
 const updateCartItem = async (req, res) => {
   try {
@@ -209,9 +202,6 @@ const updateCartItem = async (req, res) => {
   }
 };
 
-// =========================================================
-// REMOVE FROM CART
-// =========================================================
 
 const removeFromCart = async (req, res) => {
   try {
@@ -264,9 +254,7 @@ const removeFromCart = async (req, res) => {
   }
 };
 
-// =========================================================
-// CLEAR CART
-// =========================================================
+
 
 const clearCart = async (req, res) => {
   try {
@@ -304,9 +292,8 @@ const clearCart = async (req, res) => {
   }
 };
 
-// =========================================================
-// EXPORT
-// =========================================================
+
+
 
 module.exports = {
   getCart,

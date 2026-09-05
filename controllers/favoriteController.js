@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const Recipe = require("../models/Recipe");
 
-// ================= ADD FAVORITE =================
+
 const addFavorite = async (req, res) => {
   try {
     const { recipeId } = req.params;
@@ -38,7 +38,7 @@ const addFavorite = async (req, res) => {
   }
 };
 
-// ================= REMOVE FAVORITE =================
+
 const removeFavorite = async (req, res) => {
   try {
     const { recipeId } = req.params;
@@ -64,7 +64,6 @@ const removeFavorite = async (req, res) => {
   }
 };
 
-// ================= GET FAVORITES =================
 const getFavorites = async (req, res) => {
   try {
     const user = await User.findById(req.user.userId)

@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema(
   {
-    // =========================================================
-    // USER
-    // =========================================================
+  
 
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -13,9 +11,7 @@ const cartSchema = new mongoose.Schema(
       unique: true,
     },
 
-    // =========================================================
-    // CART ITEMS
-    // =========================================================
+   
 
     items: [
       {
@@ -48,10 +44,6 @@ const cartSchema = new mongoose.Schema(
         },
       },
     ],
-
-    // =========================================================
-    // TOTAL
-    // =========================================================
 
     totalAmount: {
       type: Number,

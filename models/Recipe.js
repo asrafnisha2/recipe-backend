@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const recipeSchema = new mongoose.Schema(
   {
-    // =========================================================
-    // BASIC RECIPE DETAILS
-    // =========================================================
+  
 
     title: {
       type: String,
@@ -18,46 +16,35 @@ const recipeSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // =========================================================
-    // INGREDIENTS
-    // =========================================================
+    
 
     ingredients: {
       type: [String],
       required: true,
     },
 
-    // =========================================================
-    // COOKING INSTRUCTIONS
-    // =========================================================
+  
 
     instructions: {
       type: String,
       required: true,
     },
 
-    // =========================================================
-    // CATEGORY
-    // =========================================================
-
+    
     category: {
       type: String,
       required: true,
       trim: true,
     },
 
-    // =========================================================
-    // IMAGE
-    // =========================================================
+ 
 
     image: {
       type: String,
       default: "",
     },
 
-    // =========================================================
-    // COOKING INFORMATION
-    // =========================================================
+
 
     cookingTime: {
       type: Number,
@@ -75,9 +62,7 @@ const recipeSchema = new mongoose.Schema(
       default: "Medium",
     },
 
-    // =========================================================
-    // DIET INFORMATION
-    // =========================================================
+  
 
     dietaryType: {
       type: String,
@@ -95,9 +80,7 @@ const recipeSchema = new mongoose.Schema(
       default: 0,
     },
 
-    // =========================================================
-    // PRICE
-    // =========================================================
+    
 
     price: {
       type: Number,
@@ -105,9 +88,7 @@ const recipeSchema = new mongoose.Schema(
       min: 0,
     },
 
-    // =========================================================
-    // RATINGS
-    // =========================================================
+    
 
     rating: {
       type: Number,
@@ -121,9 +102,7 @@ const recipeSchema = new mongoose.Schema(
       default: 0,
     },
 
-    // =========================================================
-    // RECIPE STATUS
-    // =========================================================
+  
 
     featured: {
       type: Boolean,
@@ -135,19 +114,13 @@ const recipeSchema = new mongoose.Schema(
       default: false,
     },
 
-    // =========================================================
-    // VIEWS
-    // =========================================================
 
     views: {
       type: Number,
       default: 0,
     },
 
-    // =========================================================
-    // CREATED BY
-    // =========================================================
-
+ 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

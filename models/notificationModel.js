@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const notificationSchema = new mongoose.Schema(
   {
-    // =========================================================
-    // USER
-    // =========================================================
+  
 
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -12,10 +10,7 @@ const notificationSchema = new mongoose.Schema(
       required: true,
     },
 
-    // =========================================================
-    // NOTIFICATION TYPE
-    // =========================================================
-
+    
     type: {
       type: String,
       enum: [
@@ -28,9 +23,7 @@ const notificationSchema = new mongoose.Schema(
       default: "system",
     },
 
-    // =========================================================
-    // TITLE
-    // =========================================================
+
 
     title: {
       type: String,
@@ -38,9 +31,7 @@ const notificationSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // =========================================================
-    // MESSAGE
-    // =========================================================
+   
 
     message: {
       type: String,
@@ -48,19 +39,14 @@ const notificationSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // =========================================================
-    // READ STATUS
-    // =========================================================
+  
 
     isRead: {
       type: Boolean,
       default: false,
     },
 
-    // =========================================================
-    // OPTIONAL REFERENCE
-    // =========================================================
-
+  
     referenceId: {
       type: mongoose.Schema.Types.ObjectId,
       default: null,

@@ -5,9 +5,7 @@ const Order = require("../models/orderModel");
 const Cart = require("../models/cartModel");
 const User = require("../models/User");
 
-// =========================================================
-// VIEW RECIPE
-// =========================================================
+
 
 const viewRecipe = async (req, res) => {
   try {
@@ -35,9 +33,6 @@ const viewRecipe = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET REVIEWS
-// =========================================================
 
 const getReviews = async (req, res) => {
   try {
@@ -80,9 +75,7 @@ const getReviews = async (req, res) => {
   }
 };
 
-// =========================================================
-// CREATE / UPDATE REVIEW
-// =========================================================
+
 
 const upsertReview = async (req, res) => {
   try {
@@ -161,9 +154,7 @@ const upsertReview = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET NOTIFICATIONS
-// =========================================================
+
 
 const getNotifications = async (req, res) => {
   try {
@@ -186,9 +177,6 @@ const getNotifications = async (req, res) => {
   }
 };
 
-// =========================================================
-// MARK NOTIFICATIONS AS READ
-// =========================================================
 
 const markNotificationsRead = async (req, res) => {
   try {
@@ -216,9 +204,7 @@ const markNotificationsRead = async (req, res) => {
   }
 };
 
-// =========================================================
-// CREATE ORDER
-// =========================================================
+
 
 const createOrder = async (req, res) => {
   try {
@@ -228,26 +214,22 @@ const createOrder = async (req, res) => {
       paymentMethod = "UPI",
     } = req.body;
 
-    // Get logged-in user's cart
     const cart = await Cart.findOne({
       user: req.user.userId,
     });
 
-    // Check cart
     if (!cart || !cart.items.length) {
       return res.status(400).json({
         message: "Cart is empty",
       });
     }
 
-    // Check delivery details
     if (!deliveryAddress || !phone) {
       return res.status(400).json({
         message: "Delivery details are required",
       });
     }
 
-    // Create order
     const order = await Order.create({
       user: req.user.userId,
 
@@ -275,13 +257,12 @@ const createOrder = async (req, res) => {
       phone,
     });
 
-    // Clear cart after successful order
+  
     cart.items = [];
     cart.totalAmount = 0;
 
     await cart.save();
 
-    // Create notification
     await Notification.create({
       user: req.user.userId,
 
@@ -309,9 +290,7 @@ const createOrder = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET ORDERS
-// =========================================================
+
 
 const getOrders = async (req, res) => {
   try {
@@ -333,9 +312,7 @@ const getOrders = async (req, res) => {
   }
 };
 
-// =========================================================
-// GET RECOMMENDATIONS
-// =========================================================
+
 
 const getRecommendations = async (req, res) => {
   try {
@@ -380,9 +357,7 @@ const getRecommendations = async (req, res) => {
   }
 };
 
-// =========================================================
-// ADMIN STATS
-// =========================================================
+
 
 const adminStats = async (req, res) => {
   try {
@@ -443,9 +418,7 @@ const adminStats = async (req, res) => {
   }
 };
 
-// =========================================================
-// EXPORTS
-// =========================================================
+
 
 module.exports = {
   viewRecipe,

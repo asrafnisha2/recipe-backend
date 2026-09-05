@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    // =========================================================
-    // USER
-    // =========================================================
+
 
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -12,9 +10,7 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
 
-    // =========================================================
-    // ORDER ITEMS
-    // =========================================================
+
 
     items: [
       {
@@ -49,9 +45,6 @@ const orderSchema = new mongoose.Schema(
       },
     ],
 
-    // =========================================================
-    // TOTAL
-    // =========================================================
 
     totalAmount: {
       type: Number,
@@ -59,9 +52,6 @@ const orderSchema = new mongoose.Schema(
       min: 0,
     },
 
-    // =========================================================
-    // PAYMENT
-    // =========================================================
 
     paymentMethod: {
       type: String,
@@ -85,9 +75,6 @@ const orderSchema = new mongoose.Schema(
       default: "",
     },
 
-    // =========================================================
-    // ORDER STATUS
-    // =========================================================
 
     orderStatus: {
       type: String,
@@ -101,9 +88,7 @@ const orderSchema = new mongoose.Schema(
       default: "Pending",
     },
 
-    // =========================================================
-    // DELIVERY DETAILS
-    // =========================================================
+
 
     deliveryAddress: {
       type: String,
@@ -117,9 +102,7 @@ const orderSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // =========================================================
-    // ORDER DATE
-    // =========================================================
+
 
     orderedAt: {
       type: Date,
